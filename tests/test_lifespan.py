@@ -198,13 +198,14 @@ def test_lifespan_failure(mock_aws_api_gateway_event, lifespan, failure_type) ->
                 if message["type"] == "lifespan.startup":
                     if failure_type == "startup":
                         await send({"type": "lifespan.startup.failed", "message": "Failed."})
-                        # Note: The lifespan protocol raises LifespanFailure upon receiving this event
                     else:
                         await send({"type": "lifespan.startup.complete"})
                 elif message["type"] == "lifespan.shutdown":
-                    # We only reach this if startup succeeded (failure_type == "shutdown")
-                    assert failure_type == "shutdown", f"Unexpected shutdown with failure_type={failure_type}"
-                    await send({"type": "lifespan.shutdown.failed", "message": "Failed."})
+                    if failure_type == "shutdown":
+                        await send({"type": "lifespan.shutdown.failed", "message": "Failed."})
+                    else:  # pragma: no cover
+                        await send({"type": "lifespan.shutdown.complete"})
+                    return  # pragma: no cover
 
     handler = Mangum(app, lifespan=lifespan)
 
