@@ -87,6 +87,7 @@ filterwarnings = [
 
 [tool.coverage.run]
 source_pkgs = ["mangum", "tests"]
+omit = ["mangum/_compat.py"]
 
 [tool.coverage.report]
 exclude_lines = [
