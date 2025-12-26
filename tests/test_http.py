@@ -9,6 +9,7 @@ import pytest
 from brotli_asgi import BrotliMiddleware
 from starlette.applications import Starlette
 from starlette.middleware.gzip import GZipMiddleware
+from starlette.requests import Request
 from starlette.responses import PlainTextResponse
 
 from mangum import Mangum
@@ -165,9 +166,9 @@ def test_http_exception_handler(mock_aws_api_gateway_event) -> None:
         return PlainTextResponse(content="Error!", status_code=500)
 
     @app.route(path)
-    def homepage(request):
+    def homepage(request: Request):
         raise Exception()
-        return PlainTextResponse("Hello, world!")
+        return PlainTextResponse("Hello, world!")  # pragma: no cover
 
     handler = Mangum(app)
     response = handler(mock_aws_api_gateway_event, {})

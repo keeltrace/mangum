@@ -26,6 +26,9 @@ classifiers = [
 ]
 dependencies = ["typing_extensions"]
 
+[tool.uv]
+default-groups = ["dev"]
+
 [dependency-groups]
 dev = [
     "pytest",
@@ -90,6 +93,7 @@ source_pkgs = ["mangum", "tests"]
 omit = ["mangum/_compat.py"]
 
 [tool.coverage.report]
+fail_under = 100
 skip_covered = true
 exclude_lines = [
     "pragma: no cover",
