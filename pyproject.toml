@@ -23,7 +23,6 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Topic :: Internet :: WWW/HTTP",
 ]
-dependencies = ["typing_extensions"]
 
 [dependency-groups]
 dev = [

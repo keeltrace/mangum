@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Awaitable, MutableMapping, Sequence
-from typing import Any, Callable, Union
-
-from typing_extensions import Literal, Protocol, TypeAlias, TypedDict
+from typing import Any, Callable, Literal, Protocol, TypeAlias, TypedDict, Union
 
 LambdaEvent = dict[str, Any]
 QueryParams: TypeAlias = MutableMapping[str, Union[str, Sequence[str]]]
