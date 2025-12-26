@@ -65,7 +65,7 @@ class LifespanCycle:
         self.logger = logging.getLogger("mangum.lifespan")
         self.lifespan_state: dict[str, Any] = {}
 
-    async def __aenter__(self) -> "LifespanCycle":
+    async def __aenter__(self) -> LifespanCycle:
         """Runs the event loop for application startup."""
         asyncio.create_task(self.run())
         await self.startup()
