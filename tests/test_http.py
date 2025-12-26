@@ -167,7 +167,7 @@ def test_http_exception_handler(mock_aws_api_gateway_event) -> None:
     @app.route(path)
     def homepage(request):
         raise Exception()
-        return PlainTextResponse("Hello, world!")
+        return PlainTextResponse("Hello, world!")  # pragma: no cover
 
     handler = Mangum(app)
     response = handler(mock_aws_api_gateway_event, {})
