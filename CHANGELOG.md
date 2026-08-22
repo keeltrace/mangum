@@ -1,3 +1,8 @@
+# 0.22.0
+
+* Add Python 3.15 support by @Kludex in https://github.com/Kludex/mangum/pull/404
+* Drop Python 3.9 support by @Kludex in https://github.com/Kludex/mangum/pull/393
+
 # 0.21.0
 
 This release reverted the previous attempt on support Python 3.14 because it was
